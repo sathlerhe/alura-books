@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BotaoNavegacao from "../BotaoNavegacao";
 import LoginModal from "../LoginModal";
 import SignUpModal from "../SignUpModal";
@@ -8,12 +8,19 @@ import usuario from "./assets/usuario.svg";
 import "./BarraNavegacao.css";
 
 const BarraNavegacao = () => {
+  const navigate = useNavigate()
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
   const token = localStorage.getItem("token");
 
   const [isUserLogged, setIsUserLogged] = useState<boolean>(token !== null);
+
+  const logout = () => {
+    setIsUserLogged(false)
+    localStorage.removeItem('token')
+    navigate('/')
+  }
 
   return (
     <nav className="ab-navbar">
@@ -74,9 +81,19 @@ const BarraNavegacao = () => {
             </li>
           </>
         ) : (
-          <li>
-            <Link to="/minha-conta/pedidos">Minha conta</Link>
-          </li>
+          <>
+            <li>
+              <Link to="/minha-conta/pedidos">Minha conta</Link>
+            </li>
+            <li>
+              <BotaoNavegacao
+                texto="Logout"
+                textoAltSrc="Icone representando um usuário"
+                imagemSrc={usuario}
+                onClick={logout}
+              />
+            </li>
+          </>
         )}
       </ul>
     </nav>
