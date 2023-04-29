@@ -1,0 +1,15 @@
+.signup__modal__body {
+  display: flex;
+  align-items: center;
+  padding-top: 32px;
+}
+
+.signup__modal__body form {
+  width: 500px;
+  max-width: 100%;
+}
+
+.signup__modal__body footer {
+  margin-top: 40px;
+  text-align: center;
+}

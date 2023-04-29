@@ -1,0 +1,22 @@
+.pedidos {
+  padding: 0 32px;
+}
+
+.pedidos h1 {
+  margin-top: 0;
+}
+
+.pedidos .pedido {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid #002f52;
+}
+
+.request__delete {
+  background: none;
+  border-radius: 6px;
+  border: 1px solid #002f52;
+  margin-top: 6px;
+}
